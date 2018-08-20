@@ -18,6 +18,8 @@ namespace PostgresAsync
             Exports.Add("psql_configure", new Action(() =>
             {
 
+                NpgsqlConnection.GlobalTypeMapper.UseJsonNet();
+                NpgsqlConnection.GlobalTypeMapper.UseGeoJson();
                 Configure(
                     Function.Call<string>(Hash.GET_CONVAR, "psql_connection_string"),
                     Function.Call<string>(Hash.GET_CONVAR, "psql_debug") == "true"

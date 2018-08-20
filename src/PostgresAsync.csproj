@@ -33,8 +33,20 @@
     <Reference Include="CitizenFX.Core">
       <HintPath>D:\FXServer_ESX\citizen\clr2\lib\mono\4.5\CitizenFX.Core.dll</HintPath>
     </Reference>
+    <Reference Include="GeoJSON.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\GeoJSON.Net.1.1.64\lib\net45\GeoJSON.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=4.0.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>packages\Npgsql.4.0.2\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql.GeoJSON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Npgsql.GeoJSON.1.0.0\lib\net45\Npgsql.GeoJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql.Json.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>packages\Npgsql.Json.NET.1.0.0\lib\net45\Npgsql.Json.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,6 +78,7 @@
     <Compile Include="Transaction.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,10 +88,14 @@
   <PropertyGroup>
     <PostBuildEvent>IF NOT ($(ConfigurationName)) == (Release) GOTO END
 cd $(ProjectDir)
-copy /y bin\Release\PostgresAsync.net.dll \..
-copy /y bin\Release\Npgsql.dll \..
-copy /y bin\Release\System.Runtime.CompilerServices.Unsafe.dll \..
-copy /y bin\Release\System.Threading.Tasks.Extensions.dll \..
+copy /y $(OutDir)\PostgresAsync.net.dll \..
+copy /y $(OutDir)\Npgsql.dll \..
+copy /y $(OutDir)\System.Runtime.CompilerServices.Unsafe.dll \..
+copy /y $(OutDir)\System.Threading.Tasks.Extensions.dll \..
+copy /y $(OutDir)\GeoJSON.Net.dll \..
+copy /y $(OutDir)\Newtonsoft.Json.dll \..
+copy /y $(OutDir)\Npgsql.GeoJSON.dll \..
+copy /y $(OutDir)\Npgsql.Json.NET.dll \..
 :END</PostBuildEvent>
   </PropertyGroup>
 </Project>
