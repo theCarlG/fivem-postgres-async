@@ -107,7 +107,7 @@ namespace PostgresAsync
                         {
                             Console.WriteLine(string.Format("[{0}] [C: {1}ms, Q: {2}ms, R: {3}ms] {4}", "Postgres", ConnectionTime, QueryTime, stopwatch.ElapsedMilliseconds, QueryToString(query, parameters)));
                         }
-
+                        await BaseScript.Delay(0);
                         callback.Invoke(result);
                     }
                 }
